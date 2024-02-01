@@ -1,20 +1,27 @@
-<h1>My To-do List </h1>
+{% load static %}
+<html>
+    <link rel="stylesheet" href="{% static 'todoapp/index.css' %}">
+</html>
 
-<form action="/addTodoItem/" method = "post">{% csrf_token %}
-    <input type="text" name="content">
-    <input type="submit" value="Add Todo Item">
-</form> 
+<body>
+    <h1>My To-do List </h1>
 
-<ul>
-    <!--for loop to iterate through the list of items we have in the all_items variables-->
-    {% for i in all_items %} 
-    <li>
-        {{i.content}}
-    </li>
-    
-    <form action="/deleteTodoItem/{{i.id}}/" method = "post">{% csrf_token %}
-        <input type="submit" value="Delete">
-    </form>  
-    
-    {% endfor %}
-</ul> 
+    <form action="/addTodoItem/" method = "post">{% csrf_token %}
+        <input type="text" name="content">
+        <input type="submit" value="Add Todo Item">
+    </form> 
+
+    <ul>
+        <!--for loop to iterate through the list of items we have in the all_items variables-->
+        {% for i in all_items %} 
+        <li>
+            {{i.content}}
+        </li>
+        
+        <form action="/deleteTodoItem/{{i.id}}/" method = "post">{% csrf_token %}
+            <input type="submit" value="Delete">
+        </form>  
+        
+        {% endfor %}
+    </ul> 
+</body>
