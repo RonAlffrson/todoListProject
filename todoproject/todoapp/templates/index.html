@@ -4,24 +4,42 @@
 </html>
 
 <body>
-    <h1>My To-do List </h1>
+    <div class="resizable-content">
 
-    <form action="/addTodoItem/" method = "post">{% csrf_token %}
-        <input type="text" name="content">
-        <input type="submit" value="Add Todo Item">
-    </form> 
+        <div id="header">
+            <h1>My To-do List </h1>
+        </div>
 
-    <ul>
-        <!--for loop to iterate through the list of items we have in the all_items variables-->
-        {% for i in all_items %} 
-        <li>
-            {{i.content}}
-        </li>
+        <div id="forms">
+            <form action="/addTodoItem/" method = "post">
+                {% csrf_token %}
+                <input type="text" name="description">
+                <input type="submit" value="Add Todo Item">
+            </form>     
+
+            <form action="/deleteAllTodoItems/" method = "post">
+                {% csrf_token %}
+                <input type="submit" value="Delete All">
+            </form>
+        </div>
         
-        <form action="/deleteTodoItem/{{i.id}}/" method = "post">{% csrf_token %}
-            <input type="submit" value="Delete">
-        </form>  
+        <div>
+            <ul>
+                <!--for loop to iterate through the list of items we have in the all_items variables-->
+                {% for i in all_items %} 
+                <li>
+                    {{i.description}}
+                </li>
+                
+                <form action="/deleteTodoItem/{{i.id}}/" method = "post">{% csrf_token %}
+                    <input type="submit" value="Delete">
+                </form>  
+
+                <form action=""></form>
+                
+                {% endfor %}
+            </ul>
+        </div>
         
-        {% endfor %}
-    </ul> 
+    </div> 
 </body>
