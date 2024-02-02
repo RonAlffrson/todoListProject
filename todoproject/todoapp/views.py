@@ -28,7 +28,10 @@ def deleteAllTodoView(request):
 
     return HttpResponseRedirect('/todoapp/')
 
-'''def renameTodoView(request, i):
-    new_name = request.POST['description']
+def renameTodoView(request, i):
+    new_name = request.POST['name']
     item = TodoListItem.objects.get(id=i)
-'''
+
+    item.name = new_name
+    item.save()
+    return HttpResponseRedirect('/todoapp')

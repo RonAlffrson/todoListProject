@@ -22,7 +22,7 @@ body{
     resize: both;
     overflow: auto;
     max-height: fit-content;
-    max-width: fit-content;
+    width: 75%;
 }
 
 .item-name{
@@ -30,13 +30,23 @@ body{
     font-weight: bold;
 }
 
-/*
-ul{
-    border: 1px rgb(49, 46, 46);
+/*#header{
+    padding: auto;
+    justify-self: auto;
+}*/
+
+
+li{
+    border: 2px rgb(32, 30, 30);
     border-style: solid;
-    background-color: rgb(110, 147, 148);
+    background-color: rgb(128, 128, 128);
 
     border-radius: 25px;
-    padding: 20px;
+    padding: 10px;
+    margin-bottom: 10px;
 
-}*/
+}
+
+ul {
+    list-style-type: none;
+  }
