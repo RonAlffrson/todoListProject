@@ -1,6 +1,8 @@
 {% load static %}
 <html>
     <link rel="stylesheet" href="{% static 'todoapp/index.css' %}">
+    <link rel="icon" href="data:,">
+
 </html>
 
 <body>
@@ -16,12 +18,12 @@
 
                 <input type="text" name="name" placeholder="Name of Item" required>
                 <input type="text" name="description" placeholder="Description">
-                <input type="submit" value="Add To-do Item">
+                <input class="button" type="submit" value="Add To-do Item">
             </form>     
 
             <form action="/deleteAllTodoItems/" method="post">
                 {% csrf_token %}
-                <input type="submit" value="Delete All">
+                <input class="bad-button" type="submit" value="Delete All">
             </form>
         </div>
         
@@ -38,13 +40,13 @@
                     </p>
                     <form action="/deleteTodoItem/{{i.id}}/" method="post">
                         {% csrf_token %}
-                        <input type="submit" value="Delete">
+                        <input class="bad-button" type="submit" value="Delete">
                     </form>  
                     
                     <form action="/renameTodoItem/{{i.id}}/" method="post">
                         {% csrf_token %}
                         <input type="text" name="name" placeholder="New Name" required>
-                        <input type="submit" value="Rename">
+                        <input class="button" type="submit" value="Rename">
                     </form> 
                 </li>
                 
