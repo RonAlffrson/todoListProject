@@ -11,13 +11,15 @@
         </div>
 
         <div id="forms">
-            <form action="/addTodoItem/" method = "post">
+            <form action="/addTodoItem/" method="post">
                 {% csrf_token %}
-                <input type="text" name="description">
-                <input type="submit" value="Add Todo Item">
+
+                <input type="text" name="name" placeholder="Name of Item" required> <br>
+                <input type="text" name="description" placeholder="Description">
+                <input type="submit" value="Add To-do Item">
             </form>     
 
-            <form action="/deleteAllTodoItems/" method = "post">
+            <form action="/deleteAllTodoItems/" method="post">
                 {% csrf_token %}
                 <input type="submit" value="Delete All">
             </form>
@@ -28,14 +30,19 @@
                 <!--for loop to iterate through the list of items we have in the all_items variables-->
                 {% for i in all_items %} 
                 <li>
-                    {{i.description}}
+                    <p>
+                        <div class="item-name" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{i.name}}</div>
+                        <br>
+                        {{i.description}}
+
+                    </p>
                 </li>
                 
-                <form action="/deleteTodoItem/{{i.id}}/" method = "post">{% csrf_token %}
+                <form action="/deleteTodoItem/{{i.id}}/" method="post">
+                    {% csrf_token %}
                     <input type="submit" value="Delete">
                 </form>  
 
-                <form action=""></form>
                 
                 {% endfor %}
             </ul>

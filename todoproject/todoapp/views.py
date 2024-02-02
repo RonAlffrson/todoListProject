@@ -10,8 +10,10 @@ def todoappView(request):
     {'all_items':all_todo_items})
 
 def addTodoView(request):
-    x = request.POST['description']
-    new_item = TodoListItem(description = x)
+    x = request.POST['name']
+    y = request.POST['description']
+
+    new_item = TodoListItem(name = x, description = y)
     new_item.save()
     return HttpResponseRedirect('/todoapp/') 
 
@@ -26,6 +28,7 @@ def deleteAllTodoView(request):
 
     return HttpResponseRedirect('/todoapp/')
 
-def renameTodoView(request, i):
+'''def renameTodoView(request, i):
     new_name = request.POST['description']
     item = TodoListItem.objects.get(id=i)
+'''
