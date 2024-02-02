@@ -56,7 +56,7 @@ ul {
   
   /* CSS */
 .button {
-    appearance: none;
+     appearance: none;
     backface-visibility: hidden;
     background-color: #2f80ed;
     border-radius: 10px;
@@ -84,31 +84,31 @@ ul {
     touch-action: manipulation;
     vertical-align: top;
     white-space: nowrap;
-  }
-  
-  .button:hover {
+}
+
+.button:hover {
     background-color: #1366d6;
     box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
     opacity: 1;
     transform: translateY(0);
     transition-duration: .35s;
-  }
-  
-  .button:hover:after {
+}
+
+.button:hover:after {
     opacity: .5;
-  }
-  
-  .button:active {
+}
+
+.button:active {
     box-shadow: rgba(0, 0, 0, .1) 0 3px 6px 0, rgba(0, 0, 0, .1) 0 0 10px 0, rgba(0, 0, 0, .1) 0 1px 4px -1px;
     transform: translateY(2px);
     transition-duration: .35s;
-  }
-  
-  .button:active:after {
+}
+
+.button:active:after {
     opacity: 1;
-  }
-  
-  .bad-button {
+}
+
+.bad-button {
     appearance: none;
     backface-visibility: hidden;
     background-color: #c22a2a;
@@ -137,26 +137,37 @@ ul {
     touch-action: manipulation;
     vertical-align: top;
     white-space: nowrap;
-  }
-  
-  .bad-button:hover {
+}
+
+.bad-button:hover {
     background-color: #a50e0e;
     box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
     opacity: 1;
     transform: translateY(0);
     transition-duration: .35s;
-  }
-  
-  .bad-button:hover:after {
+}
+
+.bad-button:hover:after {
     opacity: .5;
-  }
-  
-  .bad-button:active {
+}
+
+.bad-button:active {
     box-shadow: rgba(0, 0, 0, .1) 0 3px 6px 0, rgba(0, 0, 0, .1) 0 0 10px 0, rgba(0, 0, 0, .1) 0 1px 4px -1px;
     transform: translateY(2px);
     transition-duration: .35s;
-  }
-  
-  .button:active:after {
+}
+
+.button:active:after {
     opacity: 1;
-  }  
+}  
+
+.input {
+    font-size: 16px;
+    font-size: max(16px, 1em);
+    font-family: inherit;
+    padding: 0.25em 0.5em;
+    background-color: #fff;
+    border: 2px solid var(--input-border);
+    border-radius: 4px;
+}
+

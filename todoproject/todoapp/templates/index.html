@@ -16,8 +16,8 @@
             <form action="/addTodoItem/" method="post">
                 {% csrf_token %}
 
-                <input type="text" name="name" placeholder="Name of Item" required>
-                <input type="text" name="description" placeholder="Description">
+                <input class="input" type="text" name="name" placeholder="Name of Item" required>
+                <input class="input" type="text" name="description" placeholder="Description">
                 <input class="button" type="submit" value="Add To-do Item">
             </form>     
 
@@ -45,7 +45,7 @@
                     
                     <form action="/renameTodoItem/{{i.id}}/" method="post">
                         {% csrf_token %}
-                        <input type="text" name="name" placeholder="New Name" required>
+                        <input class="input" type="text" name="name" placeholder="New Name" required>
                         <input class="button" type="submit" value="Rename">
                     </form> 
                 </li>
