@@ -1,7 +1,8 @@
 {% load static %}
 <html>
     <link rel="stylesheet" href="{% static 'todoapp/index.css' %}">
-    <link rel="icon" href="data:,">
+    <link rel="script" href="{% static 'todoapp/index.js' %}">
+    <link rel="icon" href="data">
 
 </html>
 
@@ -33,7 +34,7 @@
                 {% for i in all_items %} 
                 <li>
                     <p>
-                        <div class="item-name" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{i.name}}</div>
+                        <div class="item-title" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{i.title}}</div>
                         <br>
                         {{i.description}}
 
@@ -42,12 +43,20 @@
                         {% csrf_token %}
                         <input class="bad-button" type="submit" value="Delete">
                     </form>  
+
+                    <div class="openBtn">
+                        <!--button class="openButton" onclick="openForm()"><strong>Open Form</strong></button-->
+                    </div>
                     
-                    <form action="/renameTodoTitle/{{i.id}}/" method="post">
-                        {% csrf_token %}
-                        <input class="input" type="text" name="title" placeholder="New Title" required>
-                        <input class="button" type="submit" value="Rename Title">
-                    </form> 
+                    <div>
+                        <form action="/renamePage/{{i.id}}" method="get">
+                            {% csrf_token %}
+                            <!--input class="input" type="text" name="title" placeholder="New Title" required-->
+                            <input class="button" type="submit" value="Rename Title">
+                            <!--button type="button" class="btn cancel" onclick="closeForm()">Close</button-->
+                        </form> 
+                    </div>    
+
                 </li>
                 
                 
