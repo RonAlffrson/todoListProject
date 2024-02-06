@@ -55,7 +55,15 @@
                             <input class="button" type="submit" value="Rename Title">
                             <!--button type="button" class="btn cancel" onclick="closeForm()">Close</button-->
                         </form> 
-                    </div>    
+                    </div>
+                    <div>
+                        <form action="/changeDescriptionPage/{{i.id}}" method="get">
+                            {% csrf_token %}
+                            <!--input class="input" type="text" name="title" placeholder="New Title" required-->
+                            <input class="button" type="submit" value="Change Description">
+                            <!--button type="button" class="btn cancel" onclick="closeForm()">Close</button-->
+                        </form> 
+                    </div>
 
                 </li>
                 

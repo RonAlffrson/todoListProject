@@ -28,7 +28,7 @@ def deleteAllTodoView(request):
 
     return HttpResponseRedirect('/todoapp/')
 
-def renameTodoTitleView(request, i):
+def renameItemTitleView(request, i):
     new_title = request.POST['title']
     item = TodoListItem.objects.get(id=i)
 
@@ -39,6 +39,16 @@ def renameTodoTitleView(request, i):
 def renamePageView(request, i):
     return render(request, 'rename.html', {'i' : TodoListItem.objects.get(id=i)})
 
+def changeDescriptionPageView(request, i):
+    return render(request, 'changeDescription.html', {'i' : TodoListItem.objects.get(id=i)})
+
+def changeItemDescriptionView(request, i):
+    new_desc = request.POST['description']
+    item = TodoListItem.objects.get(id=i)
+
+    item.description = new_desc
+    item.save()
+    return HttpResponseRedirect('/todoapp/')
 
 """TODO Create a view that returns the html fragment that you want displayed
  in your pop-up. Clicking on something that is supposed to activate the 
