@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import TodoListItem
 from django.http import HttpResponseRedirect 
+from django.utils import timezone
 
 
 # Create your views here.
@@ -12,8 +13,9 @@ def todoappView(request):
 def addTodoView(request):
     x = request.POST['title']
     y = request.POST['description']
+    z = request.POST['due_date']
 
-    new_item = TodoListItem(title = x, description = y)
+    new_item = TodoListItem(title = x, description = y, created_date = timezone.now, due_date = z)
     new_item.save()
     return HttpResponseRedirect('/todoapp/') 
 
@@ -50,7 +52,13 @@ def changeItemDescriptionView(request, i):
     item.save()
     return HttpResponseRedirect('/todoapp/')
 
-"""TODO Create a view that returns the html fragment that you want displayed
- in your pop-up. Clicking on something that is supposed to activate the 
- pop-up does a GET to that view to retrieve the HTML, and then injects it 
- into the appropriate div."""
+def changeDatePageView(request, i):
+    return render(request, 'changeDate.html', {'i' : TodoListItem.objects.get(id=i)})
+
+def changeDateView(request, i):
+    new_date = request.POST['due_date']
+    item = TodoListItem.objects.get(id=i)
+
+    item.due_date = new_date
+    item.save()
+    return HttpResponseRedirect('/todoapp/')

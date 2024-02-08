@@ -19,6 +19,9 @@
 
                 <input class="input" type="text" name="title" placeholder="Title" required>
                 <input class="input" type="text" name="description" placeholder="Description">
+                <p>Due Date</p>
+                <input class="input" type="date" name="due_date" required>
+                <p></p>
                 <input class="button" type="submit" value="Add To-do Item">
             </form>     
 
@@ -37,6 +40,8 @@
                         <div class="item-title" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{i.title}}</div>
                         <br>
                         {{i.description}}
+                        <br>
+                        {{i.due_date}}
 
                     </p>
                     <form action="/deleteTodoItem/{{i.id}}/" method="post">
@@ -61,6 +66,14 @@
                             {% csrf_token %}
                             <!--input class="input" type="text" name="title" placeholder="New Title" required-->
                             <input class="button" type="submit" value="Change Description">
+                            <!--button type="button" class="btn cancel" onclick="closeForm()">Close</button-->
+                        </form> 
+                    </div>
+                    <div>
+                        <form action="/changeDatePage/{{i.id}}" method="get">
+                            {% csrf_token %}
+                            <!--input class="input" type="text" name="title" placeholder="New Title" required-->
+                            <input class="button" type="submit" value="Change Date">
                             <!--button type="button" class="btn cancel" onclick="closeForm()">Close</button-->
                         </form> 
                     </div>
