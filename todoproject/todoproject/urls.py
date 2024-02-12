@@ -15,7 +15,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from todoapp.views import todoappView, addTodoView, deleteTodoView, deleteAllTodoView, renameItemTitleView
 from todoapp.views import renamePageView, changeDescriptionPageView, changeItemDescriptionView
 from todoapp.views import changeDatePageView, changeDateView 
@@ -33,5 +33,7 @@ urlpatterns = [
     path('changeDescriptionPage/<int:i>/', changeDescriptionPageView),
     path('changeDescription/<int:i>/', changeItemDescriptionView),
     path('changeDatePage/<int:i>/', changeDatePageView),
-    path('changeDate/<int:i>/', changeDateView)
+    path('changeDate/<int:i>/', changeDateView),
+
+    path('apisapp/v1/', include('apisapp.urls'))
 ]
