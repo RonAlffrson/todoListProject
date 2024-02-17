@@ -35,6 +35,7 @@ urlpatterns = [
     path('changeDescription/<int:i>/', changeItemDescriptionView),
     path('changeDatePage/<int:i>/', changeDatePageView),
     path('changeDate/<int:i>/', changeDateView),
+    path('accounts/', include('django.contrib.auth.urls')),
     #apisapp
     path('apisapp/v1/', include('apisapp.urls'))
 ]
