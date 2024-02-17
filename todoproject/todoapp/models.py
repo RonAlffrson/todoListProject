@@ -12,3 +12,4 @@ class TodoListItem(models.Model):
     description = models.TextField() 
     created_date = models.DateTimeField(auto_now_add=True)
     due_date = models.DateTimeField(default=one_week_hence)
+    owner = models.ForeignKey('auth.User', related_name='todos', default=1, on_delete=models.CASCADE)

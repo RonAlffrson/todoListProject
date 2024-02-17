@@ -24,6 +24,7 @@ from todoapp.views import changeDatePageView, changeDateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #toodoapp
     path('todoapp/', todoappView),
     path('addTodoItem/', addTodoView), 
     path('deleteTodoItem/<int:i>/', deleteTodoView), 
@@ -34,6 +35,6 @@ urlpatterns = [
     path('changeDescription/<int:i>/', changeItemDescriptionView),
     path('changeDatePage/<int:i>/', changeDatePageView),
     path('changeDate/<int:i>/', changeDateView),
-
+    #apisapp
     path('apisapp/v1/', include('apisapp.urls'))
 ]
