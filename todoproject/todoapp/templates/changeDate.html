@@ -1,26 +1,17 @@
+{% extends "base_generic.html" %}
 {% load static %}
 
-<html>
-    <link rel="stylesheet" href="{% static 'todoapp/index.css' %}">
-    <link rel="script" href="{% static 'todoapp/index.js' %}">    
-    <link rel="icon" href="data">
+{% block content %}
 
-</html>
-<body>
+    <h2>Change Date</h2><br>
 
-    <div class="resizable-content" id="popupForm">
-        <h2>Change Date</h2><br>
-
-        <form action="/changeDate/{{i.id}}/" method="post">
-            {% csrf_token %}
-            <input class="input" type="date" name="due_date" required>
-            <input class="button" type="submit" value="Change">            
-        </form>
-        
-        <form action="/todoapp/" method="get">
-            <input class="bad-button" type="submit" value="Cancel">
-        </form>
-    </div>
+    <form action="/changeDate/{{i.id}}/" method="post">
+        {% csrf_token %}
+        <input class="input" type="date" name="due_date" required>
+        <input class="button" type="submit" value="Change">            
+    </form>
     
-    
-</body>
+    <form action="/todoapp/" method="get">
+        <input class="bad-button" type="submit" value="Cancel">
+    </form>
+{%endblock%}

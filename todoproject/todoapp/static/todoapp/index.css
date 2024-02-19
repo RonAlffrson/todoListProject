@@ -16,7 +16,7 @@ body{
     width: 75%;
 }
 
-.resizable-content {
+#content {
     border: 1px grey;
     border-style: solid;
     background-color: cadetblue;

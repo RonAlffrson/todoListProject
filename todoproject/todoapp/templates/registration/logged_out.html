@@ -1,19 +1,7 @@
+{% extends "base_generic.html" %}
 {% load static %}
 
-<html>
-    <link rel="stylesheet" href="{% static 'todoapp/index.css' %}">
-    <link rel="script" href="{% static 'todoapp/index.js' %}">    
-    <link rel="icon" href="data">
-
-</html>
-<body>
-
-    <div class="resizable-content" id="popupForm">
-        
+{% block content %}
         <p>Logged out!</p>
          <a href="{% url 'login'%}">Click here to login again.</a>
-      
-    </div>
-    
-    
-</body>
+{% endblock %}

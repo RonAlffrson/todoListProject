@@ -1,16 +1,9 @@
+{% extends "base_generic.html" %}
+
 {% load static %}
-<html>
-    <link rel="stylesheet" href="{% static 'todoapp/index.css' %}">
-    <link rel="script" href="{% static 'todoapp/index.js' %}">
-    <link rel="icon" href="data">
 
-</html>
-
-<body>
-    
-    
-    <div class="resizable-content">
-
+    <!--div id="content"-->
+{% block content %}
         <div id="header">
             <h1>My To-do List </h1>
 
@@ -54,50 +47,35 @@
                         {{i.description}}
                         <br>
                         {{i.due_date}}
-
                     </p>
-                    <form action="/deleteTodoItem/{{i.id}}/" method="post">
-                        {% csrf_token %}
-                        <input class="bad-button" type="submit" value="Delete">
-                    </form>  
 
-                    <div class="openBtn">
-                        <!--button class="openButton" onclick="openForm()"><strong>Open Form</strong></button-->
-                    </div>
-                    
+                    <div>
+                        <form action="/deleteTodoItem/{{i.id}}/" method="post">
+                            {% csrf_token %}
+                            <input class="bad-button" type="submit" value="Delete">
+                        </form>  
+                        </div>
                     <div>
                         <form action="/renamePage/{{i.id}}" method="get">
                             {% csrf_token %}
-                            <!--input class="input" type="text" name="title" placeholder="New Title" required-->
                             <input class="button" type="submit" value="Rename Title">
-                            <!--button type="button" class="btn cancel" onclick="closeForm()">Close</button-->
                         </form> 
                     </div>
                     <div>
                         <form action="/changeDescriptionPage/{{i.id}}" method="get">
                             {% csrf_token %}
-                            <!--input class="input" type="text" name="title" placeholder="New Title" required-->
                             <input class="button" type="submit" value="Change Description">
-                            <!--button type="button" class="btn cancel" onclick="closeForm()">Close</button-->
                         </form> 
                     </div>
                     <div>
                         <form action="/changeDatePage/{{i.id}}" method="get">
                             {% csrf_token %}
-                            <!--input class="input" type="text" name="title" placeholder="New Title" required-->
                             <input class="button" type="submit" value="Change Date">
-                            <!--button type="button" class="btn cancel" onclick="closeForm()">Close</button-->
                         </form> 
                     </div>
 
                 </li>
-                
-                
-
-                
                 {% endfor %}
             </ul>
         </div>
-        
-    </div> 
-</body>
+{% endblock %} 
