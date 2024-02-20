@@ -17,8 +17,8 @@
                 <li class="button" id="sidebar-button">User: {{ user.get_username }}</li>
                 <!--li class="button" id="sidebar-button"><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
                 -->
-                <li>
-                    <form class="button" id="sidebar-button" action="{% url 'logout' %}?next={{ request.path }}" method="post">
+                <li class="button" id="sidebar-button">
+                    <form  action="{% url 'logout' %}?next={{ request.path }}" method="post">
                         {% csrf_token %}
                         <button type="submit">Log out</button>
                     </form>

@@ -58,7 +58,7 @@ form{
 }
 
 
-li{
+#todos{
     border: 2px rgb(32, 30, 30);
     border-style: solid;
     background-color: rgb(128, 128, 128);
