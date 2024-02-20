@@ -7,6 +7,7 @@ body{
     flex-flow: row wrap;
     justify-content: flex-start;
 }
+
 #sidebar{
     margin-top: 30px;
     margin-bottom: 5px;
@@ -19,6 +20,35 @@ body{
     text-align: center;
     background-color: cadetblue;
     color: black;
+}
+
+#sidebar-username{
+    text-align: center;
+    background-color: cadetblue;
+    color: black;
+
+}
+
+#sidebar-button:hover {
+    background-color: rgb(80, 132, 134);
+    box-shadow: rgba(0, 0, 0, .05) 0 5px 30px, rgba(0, 0, 0, .05) 0 1px 4px;
+    opacity: 1;
+    transform: translateY(0);
+    transition-duration: .35s;
+}
+
+#sidebar-button:hover:after {
+    opacity: .5;
+}
+
+#sidebar-button:active {
+    box-shadow: rgba(0, 0, 0, .1) 0 3px 6px 0, rgba(0, 0, 0, .1) 0 0 10px 0, rgba(0, 0, 0, .1) 0 1px 4px -1px;
+    transform: translateY(2px);
+    transition-duration: .35s;
+}
+
+#sidebar-button:active:after {
+    opacity: 1;
 }
 
 #header{

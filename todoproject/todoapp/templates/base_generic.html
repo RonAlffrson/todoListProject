@@ -10,21 +10,26 @@
     <div id="sidebar">
         {% block sidebar %}
         <ul>
-            <li class="button" id="sidebar-button"><a href="/todoapp/">Home</a></li>
-        </ul>
-        <ul>
+            <li style="margin-bottom: 5px;">
+                <form action="/todoapp/" method="get">
+                    <input class="button" id="sidebar-button" type="submit" value="Home">
+                </form>
+            </li>
             {% if user.is_authenticated %}
-                <li class="button" id="sidebar-button">User: {{ user.get_username }}</li>
-                <!--li class="button" id="sidebar-button"><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
-                -->
-                <li class="button" id="sidebar-button">
+                <li class="button" id="sidebar-username">User: {{ user.get_username }}</li>
+                
+                <li style="margin-top: 5px;">
                     <form  action="{% url 'logout' %}?next={{ request.path }}" method="post">
                         {% csrf_token %}
-                        <button type="submit">Log out</button>
+                        <input class="bad-button" type="submit" value="Log out">
                     </form>
                 </li>
-                {% else %}
-                <li class="button" id="sidebar-button"><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+            {% else %}
+                <li>
+                    <form action="{% url 'login' %}?next={{ request.path }}" method="get">
+                        <input class="button" id="sidebar-button" type="submit" value="Log in">
+                    </form>
+                </li>
             {% endif %}
         </ul>
             {% endblock %}
