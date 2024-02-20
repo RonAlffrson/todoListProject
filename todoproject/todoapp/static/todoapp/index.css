@@ -14,8 +14,11 @@ body{
     list-style: none;
 }
 
-.sidebar-button{
-    background-color: rgb(172, 172, 172)
+#sidebar-button{
+    /*background-color: rgb(172, 172, 172)*/
+    text-align: center;
+    background-color: cadetblue;
+    color: black;
 }
 
 #header{

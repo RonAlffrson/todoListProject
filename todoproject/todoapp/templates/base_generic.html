@@ -10,14 +10,21 @@
     <div id="sidebar">
         {% block sidebar %}
         <ul>
-            <li class="sidebar-button"><a href="/todoapp/">Home</a></li>
+            <li class="button" id="sidebar-button"><a href="/todoapp/">Home</a></li>
         </ul>
         <ul>
             {% if user.is_authenticated %}
-                <li class="sidebar-button">User: {{ user.get_username }}</li>
-                <li class="sidebar-button"><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
-            {% else %}
-                <li class="sidebar-button"><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
+                <li class="button" id="sidebar-button">User: {{ user.get_username }}</li>
+                <!--li class="button" id="sidebar-button"><a href="{% url 'logout' %}?next={{ request.path }}">Logout</a></li>
+                -->
+                <li>
+                    <form class="button" id="sidebar-button" action="{% url 'logout' %}?next={{ request.path }}" method="post">
+                        {% csrf_token %}
+                        <button type="submit">Log out</button>
+                    </form>
+                </li>
+                {% else %}
+                <li class="button" id="sidebar-button"><a href="{% url 'login' %}?next={{ request.path }}">Login</a></li>
             {% endif %}
         </ul>
             {% endblock %}
