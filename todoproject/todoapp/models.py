@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
 from django.db import models
@@ -12,4 +13,4 @@ class TodoListItem(models.Model):
     description = models.TextField() 
     created_date = models.DateTimeField(auto_now_add=True)
     due_date = models.DateTimeField(default=one_week_hence)
-    owner = models.ForeignKey('auth.User', related_name='todos', default=1, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, related_name='todos', on_delete=models.CASCADE)

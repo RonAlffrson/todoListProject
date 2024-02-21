@@ -13,8 +13,9 @@ def addTodoView(request):
     x = request.POST['title']
     y = request.POST['description']
     z = request.POST['due_date']
+    request.user
 
-    new_item = TodoListItem(title = x, description = y, created_date = timezone.now, due_date = z)
+    new_item = TodoListItem(title = x, description = y, created_date = timezone.now, due_date = z, owner=request.user)
     new_item.save()
     return HttpResponseRedirect('/todoapp/') 
 
