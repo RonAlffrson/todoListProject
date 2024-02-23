@@ -26,7 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     #todoapp
     path('todoapp/', todoappView),
-    path('ronalffrson.pythonanywhere.com/', todoappView),
+    path('https://ronalffrson.pythonanywhere.com/', todoappView),
     path('addTodoItem/', addTodoView), 
     path('deleteTodoItem/<int:i>/', deleteTodoView), 
     path('deleteAllTodoItems/', deleteAllTodoView),
