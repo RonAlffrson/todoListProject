@@ -25,7 +25,8 @@ from todoapp.views import changeDatePageView, changeDateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     #todoapp
-    path('todoapp/', todoappView),
+    #path('todoapp/', todoappView),
+    path('', todoappView),#TODO: change this mess
     path('addTodoItem/', addTodoView), 
     path('deleteTodoItem/<int:i>/', deleteTodoView), 
     path('deleteAllTodoItems/', deleteAllTodoView),
