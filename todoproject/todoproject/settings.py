@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'todoproject.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://postgres:1234@localhost:5432/postgres',
+        default='postgresql://:1234@localhost:5432/postgres',
         conn_max_age=600
     )
     
@@ -136,7 +136,7 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/todoapp'
+LOGIN_REDIRECT_URL = '/'
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
