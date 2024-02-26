@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'todoproject.wsgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgresql://postgres:postgres@localhost:5432/todoproject',
+        default='postgres://todoproject:J3UTGpBcmnY5lPgodbmnKYGANObIdqHF@dpg-cndngiacn0vc73f7i0q0-a/todoproject',
         conn_max_age=600
     )
     
