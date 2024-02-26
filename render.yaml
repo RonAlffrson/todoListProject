@@ -1,20 +1,20 @@
 databases:
-  - name: todoappdb
+  - name: todoprojectdb
     plan: free
-    databaseName: todoapp
-    user: todoapp
+    databaseName: todoproject
+    user: todoproject
 
 services:
   - type: web
     plan: free
-    name: todoapp
+    name: todoproject
     runtime: python
     buildCommand: "./build.sh"
-    startCommand: "python -m gunicorn todoapp.asgi:application -k uvicorn.workers.UvicornWorker" 	
+    startCommand: "python -m gunicorn todoproject.asgi:application -k uvicorn.workers.UvicornWorker" 	
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: todoappdb
+          name: todoprojectdb
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
