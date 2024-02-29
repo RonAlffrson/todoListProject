@@ -20,17 +20,20 @@ def addTodoView(request):
     new_item.save()
     return HttpResponseRedirect('/') 
 
+@login_required(redirect_field_name=' ')
 def deleteTodoView(request, i):
     item = TodoListItem.objects.get(id=i)
     item.delete()
     return HttpResponseRedirect('/') 
 
+@login_required(redirect_field_name=' ')
 def deleteAllTodoView(request):
     all_items = TodoListItem.objects.all()
     all_items.delete()
 
     return HttpResponseRedirect('/')
 
+@login_required(redirect_field_name=' ')
 def renameItemTitleView(request, i):
     new_title = request.POST['title']
     item = TodoListItem.objects.get(id=i)
@@ -39,12 +42,15 @@ def renameItemTitleView(request, i):
     item.save()
     return HttpResponseRedirect('/')
 
+@login_required(redirect_field_name=' ')
 def renamePageView(request, i):
     return render(request, 'rename.html', {'i' : TodoListItem.objects.get(id=i)})
 
+@login_required(redirect_field_name=' ')
 def changeDescriptionPageView(request, i):
     return render(request, 'changeDescription.html', {'i' : TodoListItem.objects.get(id=i)})
 
+@login_required(redirect_field_name=' ')
 def changeItemDescriptionView(request, i):
     new_desc = request.POST['description']
     item = TodoListItem.objects.get(id=i)
@@ -53,9 +59,11 @@ def changeItemDescriptionView(request, i):
     item.save()
     return HttpResponseRedirect('/')
 
+@login_required(redirect_field_name=' ')
 def changeDatePageView(request, i):
     return render(request, 'changeDate.html', {'i' : TodoListItem.objects.get(id=i)})
 
+@login_required(redirect_field_name=' ')
 def changeDateView(request, i):
     new_date = request.POST['due_date']
     item = TodoListItem.objects.get(id=i)
