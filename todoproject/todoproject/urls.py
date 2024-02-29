@@ -16,26 +16,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from todoapp.views import todoappView, addTodoView, deleteTodoView, deleteAllTodoView, renameItemTitleView
-from todoapp.views import renamePageView, changeDescriptionPageView, changeItemDescriptionView
-from todoapp.views import changeDatePageView, changeDateView 
-
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     #todoapp
-    #path('todoapp/', todoappView),
-    path('', todoappView),#TODO: change this mess
-    path('addTodoItem/', addTodoView), 
-    path('deleteTodoItem/<int:i>/', deleteTodoView), 
-    path('deleteAllTodoItems/', deleteAllTodoView),
-    path('renameItemTitle/<int:i>/', renameItemTitleView),
-    path('renamePage/<int:i>/', renamePageView),
-    path('changeDescriptionPage/<int:i>/', changeDescriptionPageView),
-    path('changeDescription/<int:i>/', changeItemDescriptionView),
-    path('changeDatePage/<int:i>/', changeDatePageView),
-    path('changeDate/<int:i>/', changeDateView),
+    path('', include('todoapp.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
     #apisapp
     path('apisapp/v1/', include('apisapp.urls'))
