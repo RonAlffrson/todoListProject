@@ -2,13 +2,14 @@ from django.shortcuts import render
 from .models import TodoListItem
 from django.http import HttpResponseRedirect 
 from django.utils import timezone
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def todoappView(request):
     all_todo_items = TodoListItem.objects.all()
     return render(request, 'index.html', {'all_items': all_todo_items})
 
+@login_required(redirect_field_name=' ') #user is redirected to index page without creating a todo item
 def addTodoView(request):
     x = request.POST['title']
     y = request.POST['description']

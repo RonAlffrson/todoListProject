@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-3#uvwoyy+7k18$-bdt(lm*a8cy0vs7#+szes2y(t7o-(fup_m1'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -90,7 +90,8 @@ ASGI_APPLICATION = 'todoproject.asgi.application'
 DATABASES = {
     'default': dj_database_url.config(
         # Replace this value with your local database's connection string.
-        default='postgres://todoproject:J3UTGpBcmnY5lPgodbmnKYGANObIdqHF@dpg-cndngiacn0vc73f7i0q0-a/todoproject',
+        #default='postgres://todoproject:J3UTGpBcmnY5lPgodbmnKYGANObIdqHF@dpg-cndngiacn0vc73f7i0q0-a/todoproject',
+        default='postgres://postgres:1234@localhost:5432/postgres',
         conn_max_age=600
     )
     
