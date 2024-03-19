@@ -27,44 +27,48 @@
         
         <div>
             <ul>
-                <!--for loop to iterate through the list of items we have in the all_items variables-->
-                {% for i in all_items %} 
-                <li id="todos">
-                    <p>
-                        <div class="item-title" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{i.title}}</div>
-                        <br>
-                        {{i.description}}
-                        <br>
-                        {{i.due_date}}
-                    </p>
+                {% if all_items is not None %}
+                    <!--for loop to iterate through the list of items we have in the all_items variables-->
+                    {% for i in all_items %} 
+                    <li id="todos">
+                        <p>
+                            <div class="item-title" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{i.title}}</div>
+                            <br>
+                            {{i.description}}
+                            <br>
+                            {{i.due_date}}
+                        </p>
 
-                    <div>
-                        <form action="/deleteTodoItem/{{i.id}}/" method="post">
-                            {% csrf_token %}
-                            <input class="bad-button" type="submit" value="Delete">
-                        </form>  
+                        <div>
+                            <form action="/deleteTodoItem/{{i.id}}/" method="post">
+                                {% csrf_token %}
+                                <input class="bad-button" type="submit" value="Delete">
+                            </form>  
+                            </div>
+                        <div>   
+                            <form action="/renamePage/{{i.id}}" method="get">
+                                {% csrf_token %}
+                                <input class="button" type="submit" value="Rename Title">
+                            </form> 
                         </div>
-                    <div>
-                        <form action="/renamePage/{{i.id}}" method="get">
-                            {% csrf_token %}
-                            <input class="button" type="submit" value="Rename Title">
-                        </form> 
-                    </div>
-                    <div>
-                        <form action="/changeDescriptionPage/{{i.id}}" method="get">
-                            {% csrf_token %}
-                            <input class="button" type="submit" value="Change Description">
-                        </form> 
-                    </div>
-                    <div>
-                        <form action="/changeDatePage/{{i.id}}" method="get">
-                            {% csrf_token %}
-                            <input class="button" type="submit" value="Change Date">
-                        </form> 
-                    </div>
+                        <div>
+                            <form action="/changeDescriptionPage/{{i.id}}" method="get">
+                                {% csrf_token %}
+                                <input class="button" type="submit" value="Change Description">
+                            </form> 
+                        </div>
+                        <div>
+                            <form action="/changeDatePage/{{i.id}}" method="get">
+                                {% csrf_token %}
+                                <input class="button" type="submit" value="Change Date">
+                            </form> 
+                        </div>
 
-                </li>
-                {% endfor %}
+                    </li>
+                    {% endfor %}
+                {% else %}
+                    <p>You don't have todos</p>
+                {% endif %}
             </ul>
         </div>
 {% endblock %} 
