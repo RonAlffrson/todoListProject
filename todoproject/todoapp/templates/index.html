@@ -7,7 +7,7 @@
             <h1>My To-do List</h1> 
         </div>
 
-        <div id="forms">
+        <!--div id="forms">
             <form action="/addTodoItem/" method="post">
                 {% csrf_token %}
 
@@ -23,12 +23,47 @@
                 {% csrf_token %}
                 <input class="bad-button" type="submit" value="Delete All">
             </form>
+        </div-->
+
+        <div id="forms">
+            <form action="/addTodoList/" method="post">
+                {% csrf_token %}
+
+                <input class="input" type="text" name="title" placeholder="Title" required>
+                <p></p>
+                <input class="button" type="submit" value="Add To-do List">
+            </form>     
+
+            <form action="/deleteAllTodoLists/" method="post">
+                {% csrf_token %}
+                <input class="bad-button" type="submit" value="Delete All">
+            </form>
         </div>
+
         
         <div>
             <ul>
-                {% if all_items is not None %}
+                    {% if all_lists.exists %}
                     <!--for loop to iterate through the list of items we have in the all_items variables-->
+                        {% for l in all_lists %} 
+                            <li id="todos">
+                                <p>
+                                    <div class="item-title" style="font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">{{i.title}}</div>
+                                    <br>
+                                    {{l.title}}
+                                </p>
+                            </li>
+                        {% endfor %}
+                    {% else %}
+                        <p>You don't have lists. Create one in order to add new todo items</p>
+                    {% endif %}
+            </ul>
+        </div>
+        
+        <!--div id="todo-items">
+            <ul>
+                TODO {% if all_items is not None %}
+                    <for loop to iterate through the list of items we have in the all_items variables>
                     {% for i in all_items %} 
                     <li id="todos">
                         <p>
@@ -70,5 +105,5 @@
                     <p>You don't have todos</p>
                 {% endif %}
             </ul>
-        </div>
+        </div-->
 {% endblock %} 

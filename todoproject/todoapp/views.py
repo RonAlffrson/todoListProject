@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import TodoListItem
+from .models import TodoListItem, TodoList
 from django.http import HttpResponseRedirect 
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
@@ -7,7 +7,33 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 def todoappView(request):
     all_todo_items = TodoListItem.objects.all()
-    return render(request, 'index.html', {'all_items': all_todo_items})
+    all_todo_lists = TodoList.objects.all()
+    if all_todo_lists.query.is_empty:
+        print(all_todo_lists)
+    return render(request, 'index.html', {'all_items': all_todo_items, 'all_lists' : all_todo_lists})
+
+@login_required(redirect_field_name=' ') #user is redirected to index page without creating a todo item
+def addTodoListView(request):
+    x = request.POST['title']
+    request.user
+
+    new_item = TodoList(title = x)
+    new_item.save()
+    return HttpResponseRedirect('/') 
+
+
+@login_required(redirect_field_name=' ')
+def deleteTodoList(request, i):
+    item = TodoList.objects.get(id=i)
+    item.delete()
+    return HttpResponseRedirect('/') 
+
+@login_required(redirect_field_name=' ')
+def deleteAllTodoListsView(request):
+    all_items = TodoList.objects.all()
+    all_items.delete()
+
+    return HttpResponseRedirect('/')
 
 @login_required(redirect_field_name=' ') #user is redirected to index page without creating a todo item
 def addTodoView(request):

@@ -1,7 +1,7 @@
 from django.urls import path
 from todoapp.views import todoappView, addTodoView, deleteTodoView, deleteAllTodoView, renameItemTitleView
 from todoapp.views import renamePageView, changeDescriptionPageView, changeItemDescriptionView
-from todoapp.views import changeDatePageView, changeDateView 
+from todoapp.views import changeDatePageView, changeDateView, addTodoListView, deleteAllTodoListsView, deleteTodoList
 
 urlpatterns =  [
     path('', todoappView),
@@ -14,4 +14,8 @@ urlpatterns =  [
     path('changeDescription/<int:i>/', changeItemDescriptionView),
     path('changeDatePage/<int:i>/', changeDatePageView),
     path('changeDate/<int:i>/', changeDateView),
+
+    path('addTodoList/', addTodoListView),
+    path('deleteAllTodoLists/', deleteAllTodoListsView),
+    path('deleteTodoList/<int:i>/', deleteTodoList),
 ]
